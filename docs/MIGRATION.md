@@ -1,3 +1,3 @@
-# Deployment compatibility
+# This page has moved
 
-For tenant settings, authentication, and supported clients, see the [deployment guide](DEPLOYMENT.md).
+Read the [current guide](maintainers/migration.md) or start at the [documentation index](README.md).

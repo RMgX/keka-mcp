@@ -20,6 +20,8 @@ services:
       MCP_AUTH_TOKEN_FILE: /run/secrets/mcp_auth_token
       MCP_PUBLIC_URL: ${MCP_PUBLIC_URL:?Set final HTTPS URL ending /mcp}
       MCP_ALLOWED_ORIGINS: ${MCP_ALLOWED_ORIGINS:-}
+      MCP_TOOL_MODE: ${MCP_TOOL_MODE:-full}
+      MCP_REPORT_CACHE_SECONDS: ${MCP_REPORT_CACHE_SECONDS:-0}
     secrets: [keka_client_id, keka_client_secret, keka_api_key, mcp_auth_token]
     mem_limit: 512m
     pids_limit: 128

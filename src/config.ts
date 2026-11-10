@@ -3,6 +3,7 @@ export interface Config {
   baseUrl: string; tokenUrl: string; accessToken?: string; clientId?: string;
   clientSecret?: string; apiKey?: string; modules: Set<string>;
   allowWrites: boolean; writeTools: Set<string>; readTools: Set<string>; apiKeyParameter?: 'api_key' | 'apikey';
+  toolMode?: 'full' | 'reports' | 'compact'; reportCacheSeconds?: number;
 }
 const list = (s = '') => new Set(s.split(',').map(x => x.trim()).filter(Boolean));
 export function config(env: NodeJS.ProcessEnv = process.env): Config {
@@ -30,9 +31,13 @@ export function config(env: NodeJS.ProcessEnv = process.env): Config {
   const environment = env.KEKA_ENVIRONMENT ?? 'kekademo';
   if (!['keka', 'kekademo'].includes(environment)) throw new Error('Invalid KEKA_ENVIRONMENT');
   if (env.KEKA_ALLOW_WRITES && !['true','false'].includes(env.KEKA_ALLOW_WRITES)) throw new Error('Invalid KEKA_ALLOW_WRITES');
+  const toolMode=env.MCP_TOOL_MODE??'full';
+  if(!['full','reports','compact'].includes(toolMode))throw new Error('Invalid MCP_TOOL_MODE');
+  const cacheSeconds=env.MCP_REPORT_CACHE_SECONDS??'0';
+  if(!/^\d{1,3}$/.test(cacheSeconds)||Number(cacheSeconds)>300)throw new Error('Invalid MCP_REPORT_CACHE_SECONDS');
   const credentials = [env.KEKA_CLIENT_ID, env.KEKA_CLIENT_SECRET, env.KEKA_API_KEY];
   if (env.KEKA_ACCESS_TOKEN ? credentials.some(Boolean) : !credentials.every(Boolean)) throw new Error('Provide a token OR all three API credentials');
   return {baseUrl:`https://${company}.${environment}.com/api/v1/`, tokenUrl:`https://login.${environment}.com/connect/token`,
     accessToken:env.KEKA_ACCESS_TOKEN, clientId:env.KEKA_CLIENT_ID, clientSecret:env.KEKA_CLIENT_SECRET, apiKey:env.KEKA_API_KEY,
-    modules:list(env.KEKA_MODULES ?? 'hris'), allowWrites:env.KEKA_ALLOW_WRITES === 'true', writeTools:list(env.KEKA_WRITE_TOOLS), readTools:list(env.KEKA_READ_TOOLS),apiKeyParameter:apiKeyParameter as 'api_key'|'apikey'};
+    modules:list(env.KEKA_MODULES ?? 'hris'), allowWrites:env.KEKA_ALLOW_WRITES === 'true', writeTools:list(env.KEKA_WRITE_TOOLS), readTools:list(env.KEKA_READ_TOOLS),apiKeyParameter:apiKeyParameter as 'api_key'|'apikey',toolMode:toolMode as Config['toolMode'],reportCacheSeconds:Number(cacheSeconds)};
 }

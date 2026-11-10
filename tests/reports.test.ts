@@ -100,7 +100,51 @@ test('availability report orchestrates all data sources and exposes daily detail
 test('MCP discovers only permitted reports and returns structured report responses',async()=>{
  const c=cfg('psa,hris'),{client:rest}=mocked(c,path=>({data:path==='/psa/projects'?[project()]:[],nextPage:null}));
  const server=createServer(c,rest),client=new Client({name:'report-test',version:'1.0'});const [a,b]=InMemoryTransport.createLinkedPair();await server.connect(a);await client.connect(b);
- try{const tools=(await client.listTools()).tools;assert.equal(tools.filter(t=>t.name.startsWith('keka_report_')).length,3);const result=await client.callTool({name:'keka_report_active_projects',arguments:{asOf:'2026-11-11'}});assert.equal(result.isError,undefined);assert.equal(result.structuredContent?.complete,true);const denied=await client.callTool({name:'keka_report_project_availability',arguments:{}});assert.equal(denied.isError,true);}finally{await client.close();await server.close()}
+ try{const tools=(await client.listTools()).tools;assert.deepEqual(tools.filter(t=>t.name.startsWith('keka_report_')).map(t=>t.name).sort(),REPORTS.filter(r=>!r.dependencies.some(d=>d.startsWith('/time/'))).map(r=>r.name).sort());const result=await client.callTool({name:'keka_report_active_projects',arguments:{asOf:'2026-11-11'}});assert.equal(result.isError,undefined);assert.equal(result.structuredContent?.complete,true);const denied=await client.callTool({name:'keka_report_project_availability',arguments:{}});assert.equal(denied.isError,true);}finally{await client.close();await server.close()}
+});
+
+test('HR dashboard counts inclusive employment, separate monthly movements and only aggregate details',async()=>{
+ const c=cfg('hris'),{client,calls}=mocked(c,()=>({nextPage:null,data:[employee('e1',{joiningDate:'2026-11-11',jobTitle:{title:'Engineer'},personalEmail:'private'}),employee('e2',{employmentStatus:1,exitDate:'2026-11-11'}),employee('e3',{employmentStatus:1,exitDate:'2026-11-10'}),employee('e4',{joiningDate:'2026-11-12'})]}));
+ const r=await runReport(report('hr_dashboard'),{asOf:'2026-11-11'},c,client,catalog);
+ assert.equal(r.summary.headcount,2);assert.equal(r.summary.joinersInMonth,2);assert.equal(r.summary.exitsInMonth,2);assert.equal(r.summary.monthContainsFutureDays,true);assert.deepEqual(r.rows,[{jobTitle:'Engineer',headcount:1},{jobTitle:'Unspecified',headcount:1}]);assert.equal(JSON.stringify(r).includes('private'),false);assert.equal(calls.length,1);
+});
+
+test('portfolio works with PSA alone and includes archive metadata only on request',async()=>{
+ const c=cfg('psa'),{client}=mocked(c,()=>({data:[project('active','Active',{isBillable:true}),project('archived','Archived',{isArchived:true}),project('other','Other',{status:1})],nextPage:null}));
+ const active=await runReport(report('project_portfolio'),{},c,client,catalog),all=await runReport(report('project_portfolio'),{scope:'all'},c,client,catalog);
+ assert.equal(active.rows.length,1);assert.equal(active.rows[0].billable,true);assert.equal(all.rows.length,3);assert.equal(all.summary.archivedProjects,1);assert.equal(all.rows[2].statusCode,1);
+});
+
+test('resourcing distinguishes unallocated capacity and cross-project overload; skips archive reads by default',async()=>{
+ const c=cfg('psa,hris'),{client,calls}=mocked(c,path=>({nextPage:null,data:path==='/psa/projects'?[project('p1','One'),project('p2','Two'),project('p3','Archived',{isArchived:true})]:path==='/hris/employees'?[employee('e1'),employee('e2'),employee('e3'),employee('e4',{employmentStatus:1,exitDate:'2026-11-10'})]:path.includes('/p1/')?[allocation('a1','e1',{allocationPercentage:80}),allocation('a2','e2',{allocationPercentage:25}),allocation('a3','e4')]:[allocation('a4','e1',{allocationPercentage:50})]}));
+ const r=await runReport(report('project_resourcing'),{asOf:'2026-11-11'},c,client,catalog);
+ assert.equal(r.summary.people,3);assert.equal(r.summary.fullyUnallocated,1);assert.equal(r.summary.unallocatedFTE,1.75);assert.equal(r.summary.allocatedFTE,1.55);assert.equal(r.summary.overallocated,1);assert.equal(r.rows[0].projectCount,2);assert.ok(!calls.some(p=>p.includes('/p3/')));
+});
+
+test('project health flags overdue, missing staffing and cross-project risk without inferring delivery health',async()=>{
+ const c=cfg('psa,hris'),{client}=mocked(c,path=>({nextPage:null,data:path==='/psa/projects'?[project('p1','One',{startDate:'2026-01-01',endDate:'2026-11-10'}),project('p2','Two',{startDate:'2025-01-01',projectManagers:[{firstName:'Manager'}]})]:path==='/hris/employees'?[employee()]:path.includes('/p1/')?[allocation('a1','e1',{allocationPercentage:80})]:[allocation('a2','e1',{allocationPercentage:60})]}));
+ const r=await runReport(report('project_health'),{asOf:'2026-11-11'},c,client,catalog);
+ assert.match(r.rows[0].signals,/SCHEDULE_END_PASSED/);assert.match(r.rows[0].signals,/NO_PROJECT_MANAGER/);assert.match(r.rows[0].signals,/ALLOCATION_OUTSIDE_PROJECT_DATES/);assert.match(r.rows[1].signals,/ALLOCATION_OVER_100_PERCENT/);assert.equal(r.summary.projectsWithSignals,2);
+});
+
+test('invalid live-style employment records are disclosed without misclassifying an unverified project as unstaffed',async()=>{
+ const c=cfg('psa,hris'),{client}=mocked(c,path=>({nextPage:null,data:path==='/psa/projects'?[project('p1','One',{startDate:'2025-01-01'})]:path==='/hris/employees'?[employee('e1',{joiningDate:null}),employee('e2')]:[allocation()]}));
+ const args={asOf:'2026-11-11'},hr=await runReport(report('hr_dashboard'),args,c,client,catalog),capacity=await runReport(report('project_resourcing'),args,c,client,catalog),health=await runReport(report('project_health'),args,c,client,catalog);
+ assert.equal(hr.summary.headcount,1);assert.equal(hr.summary.invalidEmployeeRecords,1);assert.equal(hr.warnings.length,1);
+ assert.equal(capacity.summary.excludedAllocations,1);assert.equal(capacity.summary.allocatedFTE,0);assert.equal(capacity.warnings.length,2);
+ assert.match(health.rows[0].signals,/STAFFING_DATA_UNVERIFIED/);assert.doesNotMatch(health.rows[0].signals,/NO_CURRENT_EMPLOYED_STAFF/);
+});
+
+test('validation audits all projects and distinguishes missing profiles, bad dates and expired employment',async()=>{
+ const c=cfg('psa,hris'),{client}=mocked(c,path=>({nextPage:null,data:path==='/psa/projects'?[project('p1','Archive',{isArchived:true,startDate:'2026-01-01'})]:path==='/hris/employees'?[employee('e1',{employmentStatus:1,exitDate:'2026-11-10'})]:[allocation('stale'),allocation('orphan','missing',{startDate:'invalid'})]}));
+ const r=await runReport(report('validation'),{asOf:'2026-11-11'},c,client,catalog);
+ assert.equal(r.summary.projectsChecked,1);assert.equal(r.summary.allocationsChecked,2);assert.equal(r.summary.readOnly,true);assert.equal(r.summary.errors,3);assert.deepEqual(r.rows.filter(x=>x.severity==='error').map(x=>x.code),['ALLOCATION_PAST_EXIT','ALLOCATION_EMPLOYEE','ALLOCATION_DATES']);
+});
+
+test('leave clips calendar sessions, deduplicates approved overlap, omits reasons and preserves unsupported units as null',async()=>{
+ const c=cfg('hris,time'),{client,calls}=mocked(c,path=>({nextPage:null,data:path==='/hris/employees'?[employee()]:[leave({fromDate:'2026-10-31',toDate:'2026-11-01',toSession:0,note:'private leave note'}),leave({id:'overlap',fromDate:'2026-11-01',toDate:'2026-11-01',toSession:0}),leave({id:'hours',selection:[{duration:{unit:1,duration:4}}]}),leave({id:'pending',status:0})]}));
+ const r=await runReport(report('leave'),{month:'2026-11',employeeIds:['e1'],asOf:'2026-11-11'},c,client,catalog);
+ assert.equal(r.summary.approvedCalendarDayEquivalents,.5);assert.equal(r.summary.unsupportedDurationRequests,1);assert.equal(r.summary.pendingRequests,1);assert.equal(r.rows[2].calendarDayEquivalentsInMonth,null);assert.equal(JSON.stringify(r).includes('private leave note'),false);assert.ok(calls[0].includes('employeeIds=e1'));assert.match(calls[0],/from=2026-11-01/);
 });
 test('missing profiles, record IDs and inconsistent page totals fail without leaking upstream messages',async()=>{
  const c=cfg();

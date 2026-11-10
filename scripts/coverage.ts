@@ -8,6 +8,6 @@ for(const m of modules){const a=ops.filter(x=>x.module===m);md+=`| ${m} | ${a.fi
 md+='\n## Operation inventory\n\n| Tool | Method and normalized path | Implementation | Official source |\n|---|---|---|---|\n';
 for(const op of ops)md+=`| ${op.name} | ${op.method.toUpperCase()} ${op.path} | ${op.supported?'Implemented':op.reason} | [Reference](${op.source}) |\n`;
 md+='\n## Unavailable or outside this implementation\n\nMultipart uploads and form-encoded business operations are cataloged but disabled. Local file reads, remote attachment downloads, OAuth app-portal installation/code/refresh flows, SSO, webhook receiving, and arbitrary HTTP requests are not exposed. API-key token acquisition is implemented separately. Goal creation/deletion, review submission and other unlisted PMS actions are not invented. Their availability is not established by this catalog.\n';
-writeFileSync(new URL('../docs/COVERAGE.md',import.meta.url),md);
+writeFileSync(new URL('../docs/reference/coverage.md',import.meta.url),md);
 writeFileSync(new URL('../docs/catalog.json',import.meta.url),JSON.stringify(ops.map(({inputSchema,components,...op})=>op),null,2));
 console.log(JSON.stringify({unique:ops.length,reads:ops.filter(x=>x.supported&&x.method==='get').length,writes:ops.filter(x=>x.supported&&x.method!=='get').length,unavailable:ops.filter(x=>!x.supported).length,modules}));
