@@ -1,0 +1,65 @@
+# Deploy RMgX Keka MCP
+
+Recommended: **one Docker container on an RMgX-managed Linux host behind Caddy or existing HTTPS ingress**. Composio must be able to reach the final HTTPS endpoint.
+
+## Host and DNS
+
+Install Docker Engine with Compose and a reverse proxy. Choose a DNS name and point it at the host. `keka-mcp.example.com` below is an example, not a provisioned endpoint. Expose HTTPS on 443, and port 80 if certificate issuance needs it. Keep application port 3000 on loopback.
+
+## Secrets and permissions
+
+Copy `.env.example` to `.env` and set non-secret deployment values:
+
+```dotenv
+KEKA_COMPANY=your-company
+KEKA_ENVIRONMENT=kekademo
+KEKA_MODULES=hris,pms,psa,time
+MCP_PUBLIC_URL=https://keka-mcp.example.com/mcp
+```
+
+Create a restricted `secrets/` directory outside version control and populate these files through a secure editor or secret manager:
+
+| File | Contents |
+|---|---|
+| `secrets/keka_client_id` | Keka client ID |
+| `secrets/keka_client_secret` | Keka client secret |
+| `secrets/keka_api_key` | Keka API key |
+| `secrets/mcp_auth_token` | Independent random MCP access key |
+
+Generate the MCP key with a secure password manager or `openssl rand -hex 32`. Never reuse your Keka API key. Set exact `KEKA_READ_TOOLS` allowlists before connecting real users. All clients of one instance share its access profile.
+
+The container runs as `node` (UID 1000). Mounted files must be readable by that user without being world-readable. Compose file-backed secrets can preserve host ownership/modes; configure ownership/group access or use your secret manager accordingly.
+
+Direct Node/stdio deployments also accept credential `_FILE` variables. `.env` is read by Compose for interpolation, not by Node. Do not put secrets in Dockerfiles, images, build arguments or the repository. The documented token field is `api_key`; earlier RMgX deployments can opt into `KEKA_API_KEY_PARAMETER=apikey` if their tenant requires it. There is no silent credential fallback.
+
+## Start and secure the endpoint
+
+```sh
+docker compose config --quiet
+docker compose up --build -d
+docker compose ps
+curl --fail http://127.0.0.1:3000/health
+```
+
+Health checks return only `{"status":"ok"}` and do not prove Keka authentication. Adapt `deploy/Caddyfile.example` to your DNS name, then reload the proxy. It assumes Caddy runs on the host; containerized ingress needs an internal network/upstream adjustment.
+
+Keep the original Host header and `Authorization`, `Accept`, `Content-Type`, `MCP-Protocol-Version` headers. Do not redirect the final `/mcp` URL. The hostname is checked against `MCP_PUBLIC_URL`. Allow long responses for Keka quota waits; the example proxy allows ten minutes.
+
+An unauthenticated POST to `/mcp` must return 401. Unapproved browser Origins receive 403. Server-to-server clients usually omit Origin. Set `MCP_ALLOWED_ORIGINS` only for controlled browser origins; comma-separated exact origins, no trailing slash. Preflight responses never authorize tool calls.
+
+## Connect and operate
+
+Connect an MCP client using the final HTTPS URL and `Authorization: Bearer <MCP access key>`. Initialize, list tools and call one permitted read. Start in sandbox; use separate production credentials after acceptance. Follow [Composio setup](COMPOSIO.md) for its registration flow.
+
+- Run one replica per Keka credential until you add distributed quota coordination. The gate and token cache are in-process.
+- Eight concurrent authenticated requests are admitted. Additional calls receive 503. Add ingress rate limits; this is not DDoS protection.
+- Every caller of an instance shares its tenant and permissions. Use separate instances/keys for separate profiles, with quota coordination or separate Keka credentials.
+- No per-user Keka RBAC or immutable audit sink is included. Add approved gateway auditing before enabling writes; never log bodies or authorization headers.
+- Rotate the MCP key by replacing the secret and recreating the container. Rotate Keka credentials separately. Replace keys shared in chats before broad rollout.
+- OAuth-only clients require a compliant external gateway. The backend itself uses API-key authentication.
+
+## Update and rollback
+
+Pull an approved GitLab commit, run tests, rebuild and recreate the service. Record the deployed commit and keep the previous image until checks pass. Rollback restores application/configuration only; it does not undo Keka writes. No application database exists.
+
+Container build, DNS/TLS and Composio account checks must be completed on the deployment host. No cloud resources or hosting charges are created by repository setup.

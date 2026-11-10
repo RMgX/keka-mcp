@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+work/
+outputs/
+specs/*.html
+*.log
+coverage/
+.npm/

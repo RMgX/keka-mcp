@@ -1,0 +1,8 @@
+# Example hostname only. Replace it with your chosen DNS name.
+keka-mcp.example.com {
+    reverse_proxy 127.0.0.1:3000 {
+        transport http {
+            read_timeout 10m
+        }
+    }
+}

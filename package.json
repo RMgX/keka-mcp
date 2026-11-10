@@ -1,0 +1,47 @@
+{
+  "name": "@rmgx/keka-mcp",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "RMgX Keka MCP: permission-controlled access to Keka HR, PMS, payroll and project APIs",
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "bin": {
+    "keka-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && tsx --test tests/*.test.ts",
+    "check": "tsc --noEmit",
+    "start": "node dist/index.js",
+    "verify:docs": "python scripts/verify_docs.py",
+    "start:http": "node dist/http-index.js",
+    "coverage:catalog": "tsx scripts/coverage.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  },
+  "author": "RMgX Technologies LLP",
+  "license": "UNLICENSED",
+  "homepage": "https://gitlab.rmgx.in/rmgx-firm/tools/keka-mcp",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.rmgx.in/rmgx-firm/tools/keka-mcp.git"
+  },
+  "keywords": [
+    "mcp",
+    "keka",
+    "hris",
+    "pms",
+    "rmgx",
+    "composio"
+  ]
+}
