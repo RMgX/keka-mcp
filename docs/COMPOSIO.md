@@ -59,7 +59,7 @@ Use your actual returned slug and the same application user ID. For another MCP 
 
 ## Constraints
 
-- Maximum 500 tools per custom toolkit. This server has 184 executable tools before permissions filtering.
+- Maximum 500 tools per custom toolkit. This server has 184 REST tools plus four built-in reports before permissions filtering.
 - Resync after changes to tools/permissions; no automatic resync. Authenticated `custom_toolkits.sync()` needs an active connected account.
 - URL, authentication and user ownership are fixed at creation. Use `create()`/`update()`, not deprecated `upsert()` examples.
 - This server does not implement OAuth DCR. Do not choose `DCR_OAUTH` without adding a compliant gateway.

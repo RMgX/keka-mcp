@@ -1,15 +1,16 @@
 # Validation report
 
-Release candidate: 2.0.0. Updated November 11, 2026.
+Release: 2.1.0. Updated November 11, 2026.
 
 ## Actual automated results
 
 - TypeScript build passed.
-- **29 tests passed, zero failed**, covering the REST client, permissions, schemas, stdio and authenticated HTTP.
+- **48 tests passed, zero failed**, covering the REST client, permissions, schemas, stdio, authenticated HTTP and built-in reporting.
 - Production dependency audit reported **zero known vulnerabilities** at validation time. This is time-specific, not a security guarantee.
 - `docker compose config --quiet` passed using non-secret example deployment values.
 - GitLab's hosted validation pipeline passed for the initial v2 release. Validation is owned by GitLab; no GitHub Actions workflow is required for the mirror.
 - A Docker image build/container run was **not performed**: Docker Desktop's engine was not running. Dockerfile and Compose are provided for deployment-host validation.
+- The NGINX example passed `nginx -t` using the official stable Windows NGINX 1.30.6 binary and temporary local certificates/log paths. No listener was started. Public TLS deployment and Linux-host proxy integration remain deployment checks.
 
 Tests exercise configuration rejection, file-based secrets, legacy tenant settings, API-key field selection, schema compilation for every executable operation, exact module/read/write permissions, query serialization, page bounds, preserved pagination metadata, token caching and refresh, bounded read retries, no automatic write retries, safe error handling, path restrictions and payload limits. MCP tests initialize real SDK clients over linked transport, child-process stdio and loopback HTTP. HTTP tests verify bearer authentication, Host/Origin rejection, CORS preflight isolation, media/JSON handling, admission control and disabled writes.
 
@@ -38,5 +39,13 @@ These checks do **not** establish live coverage for the entire catalog or deploy
 3. Register/connect a Composio custom toolkit and confirm tool synchronization and a sandbox call. The guide is checked against current documentation; no Composio account integration has been performed.
 4. Review who can hold the shared MCP key and which module/tool allowlists they receive. Add organization-approved auditing before enabling writes.
 5. Keep one replica per credential until shared throttling is added. Scope production credentials separately from sandbox credentials.
+
+## Built-in reporting validation
+
+Nineteen reporting tests cover report-level dependency permissions, MCP discovery/structured results, project ambiguity, pagination integrity and budgets, missing records, employee/assignment dates, approved half-day sessions, mandatory versus optional holidays, overlapping assignments, zero allocation, unsupported weekly-off policies, unsupported leave durations and allocation-weighted capacity. Reports never execute writes.
+
+All four built-in reports were invoked through an MCP SDK client against a private live tenant on November 11, with writes disabled. Staffing completed in four logical reads; monthly availability in six; active projects in fourteen; the all-project exited-allocation audit in fifty. Each returned `complete:true`. The audit covered all 45 projects and found no remaining stale assignments following the separately authorized corrections. Only summaries/counts were displayed; no report output or employee records were committed. Future availability is labeled planned.
+
+The Learning investigation verified concrete course/content/publish and file-upload paths in publicly served Keka web-app bundles. No Learning endpoint or upload was invoked, and API-key authentication/support remains unverified. See LEARNING-API-RESEARCH.md.
 
 No load test, penetration test, external security review, public TLS validation, OAuth gateway integration or multi-tenant/user authorization validation was performed. MCP cancellation does not yet abort a quota wait or in-flight Keka call; native fetch timeouts and process lifecycle bound execution. Underspecified vendor request schemas still require upstream validation; response schemas are captured but not enforced.

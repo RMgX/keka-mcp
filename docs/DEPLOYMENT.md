@@ -1,6 +1,6 @@
 # Deploy RMgX Keka MCP
 
-Recommended: **one Docker container on an RMgX-managed Linux host behind Caddy or existing HTTPS ingress**. Composio must be able to reach the final HTTPS endpoint.
+Recommended: **one Docker container on an RMgX-managed Linux host behind NGINX or existing HTTPS ingress**. Composio must be able to reach the final HTTPS endpoint. Caddy remains an optional alternative.
 
 ## Host and DNS
 
@@ -41,7 +41,22 @@ docker compose ps
 curl --fail http://127.0.0.1:3000/health
 ```
 
-Health checks return only `{"status":"ok"}` and do not prove Keka authentication. Adapt `deploy/Caddyfile.example` to your DNS name, then reload the proxy. It assumes Caddy runs on the host; containerized ingress needs an internal network/upstream adjustment.
+Health checks return only `{"status":"ok"}` and do not prove Keka authentication.
+
+## NGINX reverse proxy
+
+Use `deploy/nginx.conf.example` with the supplied loopback-published Compose service, or with Node running on loopback port 3000. It belongs in a file included inside NGINX's `http` context, normally `/etc/nginx/conf.d/keka-mcp.conf`.
+
+1. Replace `keka-mcp.example.com` everywhere with your chosen hostname, and set `MCP_PUBLIC_URL=https://that-host/mcp`.
+2. Provision a certificate through your existing TLS process. Set `ssl_certificate` to the full chain and `ssl_certificate_key` to its protected key. The example's Let's Encrypt paths are placeholders, not issued certificates.
+3. Validate with `sudo nginx -t`, then reload with `sudo systemctl reload nginx`. Do not run Caddy and NGINX on the same listening ports.
+4. Confirm HTTPS POST `/mcp` returns 401 without the key and permits MCP initialization/tool calls with it. `/mcp/` is not the configured path. Health remains loopback-only.
+
+The example preserves Host and Authorization, disables response buffering/cache and upstream retries, allows long-running report responses and logs paths without query strings or credential headers. Do not add automatic POST retry rules: some MCP calls can perform writes. Use your organization's certificate renewal and log-retention processes.
+
+For containerized NGINX, use an internal Docker network and change the upstream from `127.0.0.1:3000` to the application service name; keep application port 3000 unexposed publicly. NGINX on the host needs no such change. See [NGINX proxy documentation](https://nginx.org/en/docs/http/ngx_http_proxy_module.html) and [HTTPS configuration](https://nginx.org/en/docs/http/configuring_https_servers.html).
+
+For Caddy, adapt `deploy/Caddyfile.example` instead. That example also assumes a host-based proxy.
 
 Keep the original Host header and `Authorization`, `Accept`, `Content-Type`, `MCP-Protocol-Version` headers. Do not redirect the final `/mcp` URL. The hostname is checked against `MCP_PUBLIC_URL`. Allow long responses for Keka quota waits; the example proxy allows ten minutes.
 

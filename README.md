@@ -1,7 +1,7 @@
 <p align="center"><img src="assets/rmgx-logo.png" alt="RMgX Technologies LLP" width="300"></p>
 <h1 align="center">Keka MCP by RMgX</h1>
 <p align="center">Controlled access to Keka HR, performance and project data for AI tools.</p>
-<p align="center"><a href="docs/DEPLOYMENT.md">Deploy</a> · <a href="docs/COMPOSIO.md">Connect Composio</a> · <a href="docs/COVERAGE.md">Coverage</a> · <a href="docs/VALIDATION.md">Validation</a></p>
+<p align="center"><a href="docs/DEPLOYMENT.md">Deploy</a> · <a href="docs/REPORTS.md">Reports</a> · <a href="docs/COMPOSIO.md">Connect Composio</a> · <a href="docs/COVERAGE.md">Coverage</a> · <a href="docs/VALIDATION.md">Validation</a></p>
 
 An **RMgX Technologies LLP engineering initiative** that connects enterprise operations to AI tools through the Model Context Protocol. Built with TypeScript, Node.js, the official MCP SDK and Keka's documented REST API schemas.
 
@@ -19,6 +19,7 @@ Inspect project staffing, employee information, approved leave, PMS goals and re
 | Local clients | Stdio for a trusted desktop MCP host |
 | Remote clients | Authenticated Streamable HTTP for Composio and header-capable MCP clients |
 | Controls | Secret files, fixed tenant hosts, schema validation, pagination, throttling and safe errors |
+| Built-in reports | Active projects, project staffing, monthly availability and exited-employee allocation audit |
 
 Documentation coverage does not establish that a tenant enables every API. See the [operation inventory](docs/COVERAGE.md) for exact methods, paths and limits.
 
@@ -65,6 +66,12 @@ Example host configuration, with credentials supplied separately:
 }
 ```
 
+## Invoke a report
+
+Ask your AI tool: “Run eShipper-Ongoing Support's availability report for November 2026” or “Run the staffing report for Kautilya-1.” The server performs the permitted reads, pagination and calculations, then returns Markdown plus structured JSON.
+
+Report tools: `keka_report_active_projects`, `keka_report_project_staffing`, `keka_report_project_availability`, and `keka_report_exited_allocations`. All are read-only and respect underlying module/tool permissions. See [report definitions and examples](docs/REPORTS.md). The maximum exposed surface is 184 REST tools plus four reports, before permissions filtering.
+
 ## Deploy once, connect your AI tools
 
 **Recommended:** one read-only Docker service behind HTTPS with a separate MCP bearer key. Keep Keka credentials in server-side secret files. Start with exact read-tool allowlists.
@@ -83,7 +90,7 @@ Composio / remote MCP client
         Your Keka tenant
 ```
 
-Included: a multi-stage [Dockerfile](Dockerfile), a read-only [Compose service](compose.yaml), and a [Caddy proxy example](deploy/Caddyfile.example). Only the TLS proxy should be publicly accessible; Compose publishes the application on loopback.
+Included: a multi-stage [Dockerfile](Dockerfile), a read-only [Compose service](compose.yaml), an [NGINX HTTPS configuration](deploy/nginx.conf.example), and an optional [Caddy example](deploy/Caddyfile.example). Only the TLS proxy should be publicly accessible; Compose publishes the application on loopback.
 
 Follow [deployment](docs/DEPLOYMENT.md), then [connect Composio](docs/COMPOSIO.md). Remote clients must support Streamable HTTP and an `Authorization` header. OAuth-only clients need a separate MCP-compatible OAuth gateway. This server does not implement OAuth discovery or Dynamic Client Registration.
 
@@ -115,6 +122,8 @@ Keka documents 50 requests/minute. A shared in-process gate spaces requests at l
 - One process has one tenant and one permission profile. All holders of its MCP key share that access; it is not per-employee authorization.
 - Successful responses contain business data and may be retained by the AI host or Composio. Error bodies and credentials are not logged or returned.
 - Uploads, SSO, app-portal installation, webhooks and attachment downloads are outside the implementation.
+
+Learning course and upload endpoints have been found in Keka's web-app code, outside the public REST catalog. Their API-key authentication/support contract is not verified, so Learning tools are not exposed. See the [Learning API findings](docs/LEARNING-API-RESEARCH.md) for concrete paths and evidence.
 
 Read [SECURITY.md](SECURITY.md) and the [migration notes](docs/MIGRATION.md) before upgrading an existing deployment.
 
