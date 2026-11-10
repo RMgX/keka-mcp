@@ -8,6 +8,7 @@ Release candidate: 2.0.0. Updated November 11, 2026.
 - **29 tests passed, zero failed**, covering the REST client, permissions, schemas, stdio and authenticated HTTP.
 - Production dependency audit reported **zero known vulnerabilities** at validation time. This is time-specific, not a security guarantee.
 - `docker compose config --quiet` passed using non-secret example deployment values.
+- GitLab's hosted validation pipeline passed for the initial v2 release. Validation is owned by GitLab; no GitHub Actions workflow is required for the mirror.
 - A Docker image build/container run was **not performed**: Docker Desktop's engine was not running. Dockerfile and Compose are provided for deployment-host validation.
 
 Tests exercise configuration rejection, file-based secrets, legacy tenant settings, API-key field selection, schema compilation for every executable operation, exact module/read/write permissions, query serialization, page bounds, preserved pagination metadata, token caching and refresh, bounded read retries, no automatic write retries, safe error handling, path restrictions and payload limits. MCP tests initialize real SDK clients over linked transport, child-process stdio and loopback HTTP. HTTP tests verify bearer authentication, Host/Origin rejection, CORS preflight isolation, media/JSON handling, admission control and disabled writes.

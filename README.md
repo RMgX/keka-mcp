@@ -130,7 +130,7 @@ npm run coverage:catalog
 
 To refresh documentation, run `python scripts/verify_docs.py`, update its verification date, regenerate coverage, inspect the diff and rerun tests. Runtime uses local snapshots only. Ship `dist`, `specs`, `package.json` and production dependencies together.
 
-GitLab is the source repository. GitHub is a mirror; make changes through GitLab. Keep credentials, employee exports and local launcher configuration out of both repositories.
+GitLab is the source repository and runs the validation pipeline. GitHub is an [automatic push mirror](docs/REPOSITORIES.md); make changes through GitLab. Keep credentials, employee exports and local launcher configuration out of both repositories.
 
 ## About RMgX
 
