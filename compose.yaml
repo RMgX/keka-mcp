@@ -1,0 +1,36 @@
+services:
+  keka-mcp:
+    build: .
+    restart: unless-stopped
+    init: true
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    ports: [127.0.0.1:3000:3000]
+    environment:
+      KEKA_COMPANY: ${KEKA_COMPANY:?Set KEKA_COMPANY}
+      KEKA_ENVIRONMENT: ${KEKA_ENVIRONMENT:-kekademo}
+      KEKA_MODULES: ${KEKA_MODULES:-hris,pms,psa,time}
+      KEKA_READ_TOOLS: ${KEKA_READ_TOOLS:-}
+      KEKA_ALLOW_WRITES: "false"
+      KEKA_API_KEY_PARAMETER: ${KEKA_API_KEY_PARAMETER:-api_key}
+      KEKA_CLIENT_ID_FILE: /run/secrets/keka_client_id
+      KEKA_CLIENT_SECRET_FILE: /run/secrets/keka_client_secret
+      KEKA_API_KEY_FILE: /run/secrets/keka_api_key
+      MCP_AUTH_TOKEN_FILE: /run/secrets/mcp_auth_token
+      MCP_PUBLIC_URL: ${MCP_PUBLIC_URL:?Set final HTTPS URL ending /mcp}
+      MCP_ALLOWED_ORIGINS: ${MCP_ALLOWED_ORIGINS:-}
+      MCP_TOOL_MODE: ${MCP_TOOL_MODE:-full}
+      MCP_REPORT_CACHE_SECONDS: ${MCP_REPORT_CACHE_SECONDS:-0}
+    secrets: [keka_client_id, keka_client_secret, keka_api_key, mcp_auth_token]
+    mem_limit: 512m
+    pids_limit: 128
+secrets:
+  keka_client_id:
+    file: ./secrets/keka_client_id
+  keka_client_secret:
+    file: ./secrets/keka_client_secret
+  keka_api_key:
+    file: ./secrets/keka_api_key
+  mcp_auth_token:
+    file: ./secrets/mcp_auth_token

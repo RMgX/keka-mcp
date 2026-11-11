@@ -1,0 +1,1734 @@
+[
+  {
+    "name": "keka_delete_hris_bgv_vendors_bgvId_checks_checkId",
+    "module": "hris",
+    "method": "delete",
+    "path": "/hris/bgv/vendors/{bgvId}/checks/{checkId}",
+    "source": "https://developers.keka.com/reference/delete_hris-bgv-vendors-bgvid-checks-checkid",
+    "summary": "Delete bgv check for a vendor",
+    "supported": true
+  },
+  {
+    "name": "keka_delete_v1_hire_vendorId_assessments_assessmentId",
+    "module": "hire",
+    "method": "delete",
+    "path": "/hire/{vendorId}/assessments/{assessmentId}",
+    "source": "https://developers.keka.com/reference/delete_v1-hire-vendorid-assessments-assessmentid",
+    "summary": "Delete Assessments",
+    "supported": true
+  },
+  {
+    "name": "keka_get_assets",
+    "module": "assets",
+    "method": "get",
+    "path": "/assets",
+    "source": "https://developers.keka.com/reference/get_assets",
+    "summary": "Get all Assets",
+    "supported": true
+  },
+  {
+    "name": "keka_get_assets_categories",
+    "module": "assets",
+    "method": "get",
+    "path": "/assets/categories",
+    "source": "https://developers.keka.com/reference/get_assets-categories",
+    "summary": "Get all Asset Categories",
+    "supported": true
+  },
+  {
+    "name": "keka_get_assets_conditions",
+    "module": "assets",
+    "method": "get",
+    "path": "/assets/conditions",
+    "source": "https://developers.keka.com/reference/get_assets-conditions",
+    "summary": "Get all Asset Conditions",
+    "supported": true
+  },
+  {
+    "name": "keka_get_assets_types",
+    "module": "assets",
+    "method": "get",
+    "path": "/assets/types",
+    "source": "https://developers.keka.com/reference/get_assets-types",
+    "summary": "Get all Asset Types",
+    "supported": true
+  },
+  {
+    "name": "keka_get_banks",
+    "module": "banks",
+    "method": "get",
+    "path": "/banks",
+    "source": "https://developers.keka.com/reference/get_banks",
+    "summary": "Get all Banks",
+    "supported": true
+  },
+  {
+    "name": "keka_get_expense_attachment",
+    "module": "expense",
+    "method": "get",
+    "path": "/expense/attachment",
+    "source": "https://developers.keka.com/reference/get_expense-attachment",
+    "summary": "Get Expense Attachment Download Url",
+    "supported": true
+  },
+  {
+    "name": "keka_get_expense_categories",
+    "module": "expense",
+    "method": "get",
+    "path": "/expense/categories",
+    "source": "https://developers.keka.com/reference/get_expense-categories",
+    "summary": "Get all Expense Categories",
+    "supported": true
+  },
+  {
+    "name": "keka_get_expense_claims",
+    "module": "expense",
+    "method": "get",
+    "path": "/expense/claims",
+    "source": "https://developers.keka.com/reference/get_expense-claims",
+    "summary": "Get all Expense Claims",
+    "supported": true
+  },
+  {
+    "name": "keka_get_expense_employees_employeeId_expenses",
+    "module": "expense",
+    "method": "get",
+    "path": "/expense/employees/{employeeId}/expenses",
+    "source": "https://developers.keka.com/reference/get_expense-employees-employeeid-expenses",
+    "summary": "Get all Expenses",
+    "supported": true
+  },
+  {
+    "name": "keka_get_expense_employees_expenses",
+    "module": "expense",
+    "method": "get",
+    "path": "/expense/employees/expenses",
+    "source": "https://developers.keka.com/reference/get_expense-employees-expenses",
+    "summary": "Get all Expenses",
+    "supported": true
+  },
+  {
+    "name": "keka_get_expense_expenseId_attachment_attachmentId",
+    "module": "expense",
+    "method": "get",
+    "path": "/expense/{expenseId}/attachment/{attachmentId}",
+    "source": "https://developers.keka.com/reference/get_expense-expenseid-attachment-attachmentid",
+    "summary": "Get Expense Attachment Download Url",
+    "supported": true
+  },
+  {
+    "name": "keka_get_expensepolicies",
+    "module": "expensepolicies",
+    "method": "get",
+    "path": "/expensepolicies",
+    "source": "https://developers.keka.com/reference/get_expensepolicies",
+    "summary": "Get all expensepolicies",
+    "supported": true
+  },
+  {
+    "name": "keka_get_helpdesk_ticket_categories",
+    "module": "helpdesk",
+    "method": "get",
+    "path": "/helpdesk/ticket/categories",
+    "source": "https://developers.keka.com/reference/get_helpdesk-ticket-categories",
+    "summary": "Get All Helpdesk Categories",
+    "supported": true
+  },
+  {
+    "name": "keka_get_helpdesk_ticket_closingreasons",
+    "module": "helpdesk",
+    "method": "get",
+    "path": "/helpdesk/ticket/closingreasons",
+    "source": "https://developers.keka.com/reference/get_helpdesk-ticket-closingreasons",
+    "summary": "Get All Helpdesk Closing Reasons",
+    "supported": true
+  },
+  {
+    "name": "keka_get_helpdesk_tickets",
+    "module": "helpdesk",
+    "method": "get",
+    "path": "/helpdesk/tickets",
+    "source": "https://developers.keka.com/reference/get_helpdesk-tickets",
+    "summary": "Get All Helpdesk Tickets",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_bgv_bgvId_requests",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/bgv/{bgvId}/requests",
+    "source": "https://developers.keka.com/reference/get_hris-bgv-bgvid-requests",
+    "summary": "Get all bgvrequests",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_bgv_vendors_bgvId_checks",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/bgv/vendors/{bgvId}/checks",
+    "source": "https://developers.keka.com/reference/get_hris-bgv-vendors-bgvid-checks",
+    "summary": "Get all checks",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_contingenttypes",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/contingenttypes",
+    "source": "https://developers.keka.com/reference/get_hris-contingenttypes",
+    "summary": "Get all Contingent Types",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_currencies",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/currencies",
+    "source": "https://developers.keka.com/reference/get_hris-currencies",
+    "summary": "Get all currencies",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_departments",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/departments",
+    "source": "https://developers.keka.com/reference/get_hris-departments",
+    "summary": "Get all departments",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_documents_types",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/documents/types",
+    "source": "https://developers.keka.com/reference/get_hris-documents-types",
+    "summary": "Gets the document types.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_e_sign_vendorId_letterrequests",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/e-sign/{vendorId}/letterrequests",
+    "source": "https://developers.keka.com/reference/get_hris-e-sign-vendorid-letterrequests",
+    "summary": "Get Digital signature workflow request details",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_e_sign_vendorId_letterrequests_letterRe_f793382552",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/e-sign/{vendorId}/letterrequests/{letterRequestId}/attachments",
+    "source": "https://developers.keka.com/reference/get_hris-e-sign-vendorid-letterrequests-letterrequestid-attachments",
+    "summary": "Get Digital signature workflow document",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_employees",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/employees",
+    "source": "https://developers.keka.com/reference/get_hris-employees",
+    "summary": "Get all Employees",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_employees_documents",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/employees/documents",
+    "source": "https://developers.keka.com/reference/get_hris-employees-documents",
+    "summary": "Get Employee Documents",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_employees_documents_attachment",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/employees/documents/attachment",
+    "source": "https://developers.keka.com/reference/get_hris-employees-documents-attachment",
+    "summary": "Get Employee Document Attachment Download Url",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_employees_employeeId",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/employees/{employeeId}",
+    "source": "https://developers.keka.com/reference/get_hris-employees-employeeid",
+    "summary": "Get an Employee",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_employees_employeeId_skills",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/employees/{employeeId}/skills",
+    "source": "https://developers.keka.com/reference/get_hris-employees-employeeid-skills",
+    "summary": "Get employee skills",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_employees_updatefields",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/employees/updatefields",
+    "source": "https://developers.keka.com/reference/get_hris-employees-updatefields",
+    "summary": "Get all update fields",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_exitreasons",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/exitreasons",
+    "source": "https://developers.keka.com/reference/get_hris-exitreasons",
+    "summary": "Get all exitreasons",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_groups",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/groups",
+    "source": "https://developers.keka.com/reference/get_hris-groups",
+    "summary": "Get all Groups",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_grouptypes",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/grouptypes",
+    "source": "https://developers.keka.com/reference/get_hris-grouptypes",
+    "summary": "Get all Group Types",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_jobtitles",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/jobtitles",
+    "source": "https://developers.keka.com/reference/get_hris-jobtitles",
+    "summary": "Get all jobtitles",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_locations",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/locations",
+    "source": "https://developers.keka.com/reference/get_hris-locations",
+    "summary": "Get all Locations",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_noticeperiods",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/noticeperiods",
+    "source": "https://developers.keka.com/reference/get_hris-noticeperiods",
+    "summary": "Get all noticeperiods",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_skills",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/skills",
+    "source": "https://developers.keka.com/reference/get_hris-skills",
+    "summary": "Gets all skills.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_hris_webhooks_retrylogs",
+    "module": "hris",
+    "method": "get",
+    "path": "/hris/webhooks/retrylogs",
+    "source": "https://developers.keka.com/reference/get_hris-webhooks-retrylogs",
+    "summary": "Get webhook logs",
+    "supported": true
+  },
+  {
+    "name": "keka_get_loans",
+    "module": "loans",
+    "method": "get",
+    "path": "/loans",
+    "source": "https://developers.keka.com/reference/get_loans",
+    "summary": "Get All Loans",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_bonustypes",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/bonustypes",
+    "source": "https://developers.keka.com/reference/get_payroll-bonustypes",
+    "summary": "Get all Bonus Types.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_declarations_attachments_downloadurl",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/declarations/attachments/downloadurl",
+    "source": "https://developers.keka.com/reference/get_payroll-declarations-attachments-downloadurl",
+    "summary": "Get Attachment Download Url.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_employees_componentclaims",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/employees/componentclaims",
+    "source": "https://developers.keka.com/reference/get_payroll-employees-componentclaims",
+    "summary": "Get Employee Component Claims",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_employees_financialdetails",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/employees/financialdetails",
+    "source": "https://developers.keka.com/reference/get_payroll-employees-financialdetails",
+    "summary": "Get a paged list of financial details for all employees.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_employees_flexibenefits",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/employees/flexibenefits",
+    "source": "https://developers.keka.com/reference/get_payroll-employees-flexibenefits",
+    "summary": "Get flexi benefits ",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_employees_fnf",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/employees/fnf",
+    "source": "https://developers.keka.com/reference/get_payroll-employees-fnf",
+    "summary": "Get all Employee FnF Details.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_employees_form16",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/employees/form16",
+    "source": "https://developers.keka.com/reference/get_payroll-employees-form16",
+    "summary": "Gets employee form 16",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_employees_routeEmployeeId_form16",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/employees/{routeEmployeeId}/form16",
+    "source": "https://developers.keka.com/reference/get_payroll-employees-routeemployeeid-form16",
+    "summary": "Gets employee form 16",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_employees_taxdeclarations",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/employees/taxdeclarations",
+    "source": "https://developers.keka.com/reference/get_payroll-employees-taxdeclarations",
+    "summary": "Get employee tax declaration.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_paybands",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/paybands",
+    "source": "https://developers.keka.com/reference/get_payroll-paybands",
+    "summary": "Get all Pay Bands",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_paygrades",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/paygrades",
+    "source": "https://developers.keka.com/reference/get_payroll-paygrades",
+    "summary": "Get all Pay Grades",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_paygroups",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/paygroups",
+    "source": "https://developers.keka.com/reference/get_payroll-paygroups-1",
+    "summary": "Get all Pay Groups",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_paygroups_paycycles",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/paygroups/paycycles",
+    "source": "https://developers.keka.com/reference/get_payroll-paygroups-paycycles",
+    "summary": "Get all Pay Cycles",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_paygroups_paycycles_paybatches",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/paygroups/paycycles/paybatches",
+    "source": "https://developers.keka.com/reference/get_payroll-paygroups-paycycles-paybatches",
+    "summary": "Get all Pay Cycles",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_paygroups_paycycles_paybatches_payments",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/paygroups/paycycles/paybatches/payments",
+    "source": "https://developers.keka.com/reference/get_payroll-paygroups-paycycles-paybatches-payments",
+    "summary": "Get all Batch Payments",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_paygroups_paycycles_payregister",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/paygroups/paycycles/payregister",
+    "source": "https://developers.keka.com/reference/get_payroll-paygroups-paycycles-payregister",
+    "summary": "Get Pay Register",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_paygroups_routePayGroupId_paycycles",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/paygroups/{routePayGroupId}/paycycles",
+    "source": "https://developers.keka.com/reference/get_payroll-paygroups-routepaygroupid-paycycles",
+    "summary": "Get all Pay Cycles",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_paygroups_routePayGroupId_paycycles__299e4988cb",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/paygroups/{routePayGroupId}/paycycles/{routePayCycleId}/payregister",
+    "source": "https://developers.keka.com/reference/get_payroll-paygroups-routepaygroupid-paycycles-routepaycycleid-payregister",
+    "summary": "Get Pay Register",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_paygroups_routePayGroupId_paycycles__34d55e241a",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/paygroups/{routePayGroupId}/paycycles/{routePayCycleId}/paybatches/{routePayBatchId}/payments",
+    "source": "https://developers.keka.com/reference/get_payroll-paygroups-routepaygroupid-paycycles-routepaycycleid-paybatches-routepaybatchid-payments",
+    "summary": "Get all Batch Payments",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_paygroups_routePayGroupId_paycycles__8e2e996720",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/paygroups/{routePayGroupId}/paycycles/{routePayCycleId}/paybatches",
+    "source": "https://developers.keka.com/reference/get_payroll-paygroups-routepaygroupid-paycycles-routepaycycleid-paybatches",
+    "summary": "Get all Pay Cycles",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_salaries",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/salaries",
+    "source": "https://developers.keka.com/reference/get_payroll-salaries",
+    "summary": "Get all employee Salaries",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_salarycomponents",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/salarycomponents",
+    "source": "https://developers.keka.com/reference/get_payroll-salarycomponents-1",
+    "summary": "Get all Salary Components",
+    "supported": true
+  },
+  {
+    "name": "keka_get_payroll_salarystructures",
+    "module": "payroll",
+    "method": "get",
+    "path": "/payroll/salarystructures",
+    "source": "https://developers.keka.com/reference/get_payroll-salarystructures",
+    "summary": "Get all Salary Structures.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_pms_badges",
+    "module": "pms",
+    "method": "get",
+    "path": "/pms/badges",
+    "source": "https://developers.keka.com/reference/get_pms-badges",
+    "summary": "Gets badge list.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_pms_goals",
+    "module": "pms",
+    "method": "get",
+    "path": "/pms/goals",
+    "source": "https://developers.keka.com/reference/get_pms-goals",
+    "summary": "Gets goal list.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_pms_praise",
+    "module": "pms",
+    "method": "get",
+    "path": "/pms/praise",
+    "source": "https://developers.keka.com/reference/get_pms-praise",
+    "summary": "Gets praise list.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_pms_reviewcycles",
+    "module": "pms",
+    "method": "get",
+    "path": "/pms/reviewcycles",
+    "source": "https://developers.keka.com/reference/get_pms-reviewcycles",
+    "summary": "Gets review cycle list.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_pms_reviewgroups",
+    "module": "pms",
+    "method": "get",
+    "path": "/pms/reviewgroups",
+    "source": "https://developers.keka.com/reference/get_pms-reviewgroups",
+    "summary": "Gets review group list.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_pms_reviews",
+    "module": "pms",
+    "method": "get",
+    "path": "/pms/reviews",
+    "source": "https://developers.keka.com/reference/get_pms-reviews",
+    "summary": "Gets employee review list.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_pms_timeframes",
+    "module": "pms",
+    "method": "get",
+    "path": "/pms/timeframes",
+    "source": "https://developers.keka.com/reference/get_pms-timeframes",
+    "summary": "Gets time frame list.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_psa_clients",
+    "module": "psa",
+    "method": "get",
+    "path": "/psa/clients",
+    "source": "https://developers.keka.com/reference/get_psa-clients-1",
+    "summary": "Get all clients",
+    "supported": true
+  },
+  {
+    "name": "keka_get_psa_clients_clientId_invoices",
+    "module": "psa",
+    "method": "get",
+    "path": "/psa/clients/{clientId}/invoices",
+    "source": "https://developers.keka.com/reference/get_psa-clients-clientid-invoices",
+    "summary": "Get invoice billing details",
+    "supported": true
+  },
+  {
+    "name": "keka_get_psa_clients_id",
+    "module": "psa",
+    "method": "get",
+    "path": "/psa/clients/{id}",
+    "source": "https://developers.keka.com/reference/get_psa-clients-id-1",
+    "summary": "Get a client",
+    "supported": true
+  },
+  {
+    "name": "keka_get_psa_clients_id_billingroles",
+    "module": "psa",
+    "method": "get",
+    "path": "/psa/clients/{id}/billingroles",
+    "source": "https://developers.keka.com/reference/get_psa-clients-id-billingroles",
+    "summary": "Get a BillingRoles",
+    "supported": true
+  },
+  {
+    "name": "keka_get_psa_finances_ratecards",
+    "module": "psa",
+    "method": "get",
+    "path": "/psa/finances/ratecards",
+    "source": "https://developers.keka.com/reference/get_psa-finances-ratecards",
+    "summary": "Get billing rates for a rate card",
+    "supported": true
+  },
+  {
+    "name": "keka_get_psa_legalentity_legalEntityId_taxes",
+    "module": "psa",
+    "method": "get",
+    "path": "/psa/legalentity/{legalEntityId}/taxes",
+    "source": "https://developers.keka.com/reference/get_psa-legalentity-legalentityid-taxes",
+    "summary": "Gets Taxes",
+    "supported": true
+  },
+  {
+    "name": "keka_get_psa_legalentity_legalEntityId_taxgroups",
+    "module": "psa",
+    "method": "get",
+    "path": "/psa/legalentity/{legalEntityId}/taxgroups",
+    "source": "https://developers.keka.com/reference/get_psa-legalentity-legalentityid-taxgroups",
+    "summary": "Get Tax groups and taxes",
+    "supported": true
+  },
+  {
+    "name": "keka_get_psa_project_resources",
+    "module": "psa",
+    "method": "get",
+    "path": "/psa/project/resources",
+    "source": "https://developers.keka.com/reference/get_psa-project-resources",
+    "summary": "Get all project resources.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_psa_projects",
+    "module": "psa",
+    "method": "get",
+    "path": "/psa/projects",
+    "source": "https://developers.keka.com/reference/get_psa-projects-1",
+    "summary": "Get all projects.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_psa_projects_id",
+    "module": "psa",
+    "method": "get",
+    "path": "/psa/projects/{id}",
+    "source": "https://developers.keka.com/reference/get_psa-projects-id-1",
+    "summary": "Get a project",
+    "supported": true
+  },
+  {
+    "name": "keka_get_psa_projects_id_allocations",
+    "module": "psa",
+    "method": "get",
+    "path": "/psa/projects/{id}/allocations",
+    "source": "https://developers.keka.com/reference/get_psa-projects-id-allocations",
+    "summary": "Get a project allocations",
+    "supported": true
+  },
+  {
+    "name": "keka_get_psa_projects_id_timeentries",
+    "module": "psa",
+    "method": "get",
+    "path": "/psa/projects/{id}/timeentries",
+    "source": "https://developers.keka.com/reference/get_psa-projects-id-timeentries",
+    "summary": "Get project timesheet entries.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_psa_projects_projectId_phases",
+    "module": "psa",
+    "method": "get",
+    "path": "/psa/projects/{projectId}/phases",
+    "source": "https://developers.keka.com/reference/get_psa-projects-projectid-phases-1",
+    "summary": "Get project phases.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_psa_projects_projectId_tasks",
+    "module": "psa",
+    "method": "get",
+    "path": "/psa/projects/{projectId}/tasks",
+    "source": "https://developers.keka.com/reference/get_psa-projects-projectid-tasks-1",
+    "summary": "Get project tasks.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_psa_projects_projectId_tasks_taskId_timeentries",
+    "module": "psa",
+    "method": "get",
+    "path": "/psa/projects/{projectId}/tasks/{taskId}/timeentries",
+    "source": "https://developers.keka.com/reference/get_psa-projects-projectid-tasks-taskid-timeentries-1",
+    "summary": "Get project task time entries.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_psa_timeentries",
+    "module": "psa",
+    "method": "get",
+    "path": "/psa/timeentries",
+    "source": "https://developers.keka.com/reference/get_psa-timeentries",
+    "summary": "Get project timesheet entries.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_requisition_requests",
+    "module": "requisition",
+    "method": "get",
+    "path": "/requisition/requests",
+    "source": "https://developers.keka.com/reference/get_requisition-requests",
+    "summary": "Get all Requisition Requests",
+    "supported": true
+  },
+  {
+    "name": "keka_get_rnr_employee_employeeId_points",
+    "module": "rnr",
+    "method": "get",
+    "path": "/rnr/employee/{employeeId}/points",
+    "source": "https://developers.keka.com/reference/get_rnr-employee-employeeid-points",
+    "summary": "Gets the employee reward points.",
+    "supported": true
+  },
+  {
+    "name": "keka_get_time_attendance",
+    "module": "time",
+    "method": "get",
+    "path": "/time/attendance",
+    "source": "https://developers.keka.com/reference/get_time-attendance-1",
+    "summary": "Get all Attendance Records",
+    "supported": true
+  },
+  {
+    "name": "keka_get_time_capturescheme",
+    "module": "time",
+    "method": "get",
+    "path": "/time/capturescheme",
+    "source": "https://developers.keka.com/reference/get_time-capturescheme",
+    "summary": "Get all captureschemes",
+    "supported": true
+  },
+  {
+    "name": "keka_get_time_holidayscalendar",
+    "module": "time",
+    "method": "get",
+    "path": "/time/holidayscalendar",
+    "source": "https://developers.keka.com/reference/get_time-holidayscalendar",
+    "summary": "Get all holidays Calendar",
+    "supported": true
+  },
+  {
+    "name": "keka_get_time_holidayscalendar_calendarId_holidays",
+    "module": "time",
+    "method": "get",
+    "path": "/time/holidayscalendar/{calendarId}/holidays",
+    "source": "https://developers.keka.com/reference/get_time-holidayscalendar-calendarid-holidays",
+    "summary": "Get holidays List",
+    "supported": true
+  },
+  {
+    "name": "keka_get_time_leavebalance",
+    "module": "time",
+    "method": "get",
+    "path": "/time/leavebalance",
+    "source": "https://developers.keka.com/reference/get_time-leavebalance",
+    "summary": "Get all Leave balances",
+    "supported": true
+  },
+  {
+    "name": "keka_get_time_leaveplans",
+    "module": "time",
+    "method": "get",
+    "path": "/time/leaveplans",
+    "source": "https://developers.keka.com/reference/get_time-leaveplans",
+    "summary": "Get all Leave Plans",
+    "supported": true
+  },
+  {
+    "name": "keka_get_time_leaverequests",
+    "module": "time",
+    "method": "get",
+    "path": "/time/leaverequests",
+    "source": "https://developers.keka.com/reference/get_time-leaverequests",
+    "summary": "Get all Leave Requests",
+    "supported": true
+  },
+  {
+    "name": "keka_get_time_leavetypes",
+    "module": "time",
+    "method": "get",
+    "path": "/time/leavetypes",
+    "source": "https://developers.keka.com/reference/get_time-leavetypes",
+    "summary": "Get all Leave Types",
+    "supported": true
+  },
+  {
+    "name": "keka_get_time_od",
+    "module": "time",
+    "method": "get",
+    "path": "/time/od",
+    "source": "https://developers.keka.com/reference/get_time-od",
+    "summary": "Get all On Duty Requests",
+    "supported": true
+  },
+  {
+    "name": "keka_get_time_penalisationpolicies",
+    "module": "time",
+    "method": "get",
+    "path": "/time/penalisationpolicies",
+    "source": "https://developers.keka.com/reference/get_time-penalisationpolicies",
+    "summary": "Get all trackingpolicies",
+    "supported": true
+  },
+  {
+    "name": "keka_get_time_regularisationrequests",
+    "module": "time",
+    "method": "get",
+    "path": "/time/regularisationrequests",
+    "source": "https://developers.keka.com/reference/get_time-regularisationrequests",
+    "summary": "Get all Regularisation Requests",
+    "supported": true
+  },
+  {
+    "name": "keka_get_time_shiftpolicies",
+    "module": "time",
+    "method": "get",
+    "path": "/time/shiftpolicies",
+    "source": "https://developers.keka.com/reference/get_time-shiftpolicies",
+    "summary": "Get all shift policies",
+    "supported": true
+  },
+  {
+    "name": "keka_get_time_weeklyoffpolicies",
+    "module": "time",
+    "method": "get",
+    "path": "/time/weeklyoffpolicies",
+    "source": "https://developers.keka.com/reference/get_time-weeklyoffpolicies",
+    "summary": "Get all weeklyoff policies",
+    "supported": true
+  },
+  {
+    "name": "keka_get_time_wfh",
+    "module": "time",
+    "method": "get",
+    "path": "/time/wfh",
+    "source": "https://developers.keka.com/reference/get_time-wfh",
+    "summary": "Get all WFH Requests",
+    "supported": true
+  },
+  {
+    "name": "keka_get_traveldesk_advancerequests",
+    "module": "traveldesk",
+    "method": "get",
+    "path": "/traveldesk/advancerequests",
+    "source": "https://developers.keka.com/reference/get_traveldesk-advancerequests",
+    "summary": "To Fetch Advance Requests",
+    "supported": true
+  },
+  {
+    "name": "keka_get_v1_hire_jobboards",
+    "module": "hire",
+    "method": "get",
+    "path": "/hire/jobboards",
+    "source": "https://developers.keka.com/reference/get_v1-hire-jobboards-1",
+    "summary": "Get all Job Boards",
+    "supported": true
+  },
+  {
+    "name": "keka_get_v1_hire_jobs",
+    "module": "hire",
+    "method": "get",
+    "path": "/hire/jobs",
+    "source": "https://developers.keka.com/reference/get_v1-hire-jobs",
+    "summary": "Get all jobs",
+    "supported": true
+  },
+  {
+    "name": "keka_get_v1_hire_jobs_candidate_candidateId_resume",
+    "module": "hire",
+    "method": "get",
+    "path": "/hire/jobs/candidate/{candidateId}/resume",
+    "source": "https://developers.keka.com/reference/get_v1-hire-jobs-candidate-candidateid-resume",
+    "summary": "Get candidate Resume",
+    "supported": true
+  },
+  {
+    "name": "keka_get_v1_hire_jobs_jobId_applicationfields",
+    "module": "hire",
+    "method": "get",
+    "path": "/hire/jobs/{jobId}/applicationfields",
+    "source": "https://developers.keka.com/reference/get_v1-hire-jobs-jobid-applicationfields",
+    "summary": "Get application fields",
+    "supported": true
+  },
+  {
+    "name": "keka_get_v1_hire_jobs_jobId_candidate_candidateId_interviews",
+    "module": "hire",
+    "method": "get",
+    "path": "/hire/jobs/{jobId}/candidate/{candidateId}/interviews",
+    "source": "https://developers.keka.com/reference/get_v1-hire-jobs-jobid-candidate-candidateid-interviews",
+    "summary": "Get interview scheduled and completed for a job candidate",
+    "supported": true
+  },
+  {
+    "name": "keka_get_v1_hire_jobs_jobId_candidate_candidateId_scorecards",
+    "module": "hire",
+    "method": "get",
+    "path": "/hire/jobs/{jobId}/candidate/{candidateId}/scorecards",
+    "source": "https://developers.keka.com/reference/get_v1-hire-jobs-jobid-candidate-candidateid-scorecards",
+    "summary": "Get scorecard of a specified candidate for a job candidate",
+    "supported": true
+  },
+  {
+    "name": "keka_get_v1_hire_jobs_jobId_candidates",
+    "module": "hire",
+    "method": "get",
+    "path": "/hire/jobs/{jobId}/candidates",
+    "source": "https://developers.keka.com/reference/get_v1-hire-jobs-jobid-candidates",
+    "summary": "Get job candidates",
+    "supported": true
+  },
+  {
+    "name": "keka_get_v1_hire_preboarding_candidates",
+    "module": "hire",
+    "method": "get",
+    "path": "/hire/preboarding/candidates",
+    "source": "https://developers.keka.com/reference/get_v1-hire-preboarding-candidates",
+    "summary": "Get all Preboarding Candidates",
+    "supported": true
+  },
+  {
+    "name": "keka_get_v1_hire_vendorId_assessmentrequests",
+    "module": "hire",
+    "method": "get",
+    "path": "/hire/{vendorId}/assessmentrequests",
+    "source": "https://developers.keka.com/reference/get_v1-hire-vendorid-assessmentrequests",
+    "summary": "Get all vendor assessments requests",
+    "supported": true
+  },
+  {
+    "name": "keka_get_v1_hire_vendorId_assessments",
+    "module": "hire",
+    "method": "get",
+    "path": "/hire/{vendorId}/assessments",
+    "source": "https://developers.keka.com/reference/get_v1-hire-vendorid-assessments",
+    "summary": "Get all vendor assessments",
+    "supported": true
+  },
+  {
+    "name": "keka_post_attendance_employee_routeEmployeeId_timeentry",
+    "module": "attendance",
+    "method": "post",
+    "path": "/attendance/employee/{routeEmployeeId}/timeentry",
+    "source": "https://developers.keka.com/reference/post_attendance-employee-routeemployeeid-timeentry",
+    "summary": "Adds the time entry to the attendance summary",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_attendance_employee_timeentry",
+    "module": "attendance",
+    "method": "post",
+    "path": "/attendance/employee/timeentry",
+    "source": "https://developers.keka.com/reference/post_attendance-employee-timeentry",
+    "summary": "Adds the time entry to the attendance summary",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_clients_clientId_creditnote",
+    "module": "clients",
+    "method": "post",
+    "path": "/clients/{clientId}/creditnote",
+    "source": "https://developers.keka.com/reference/post_clients-clientid-creditnote",
+    "summary": "Post credit note",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_expense_claims",
+    "module": "expense",
+    "method": "post",
+    "path": "/expense/claims",
+    "source": "https://developers.keka.com/reference/post_expense-claims",
+    "summary": "Adds an Expense claim.",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_expense_employees_employeeId_expenses",
+    "module": "expense",
+    "method": "post",
+    "path": "/expense/employees/{employeeId}/expenses",
+    "source": "https://developers.keka.com/reference/post_expense-employees-employeeid-expenses",
+    "summary": "Adds an Expense",
+    "supported": true
+  },
+  {
+    "name": "keka_post_expense_employees_expenses",
+    "module": "expense",
+    "method": "post",
+    "path": "/expense/employees/expenses",
+    "source": "https://developers.keka.com/reference/post_expense-employees-expenses",
+    "summary": "Adds an Expense",
+    "supported": true
+  },
+  {
+    "name": "keka_post_helpdesk_tickets",
+    "module": "helpdesk",
+    "method": "post",
+    "path": "/helpdesk/tickets",
+    "source": "https://developers.keka.com/reference/post_helpdesk-tickets",
+    "summary": "Add Helpdesk Ticket",
+    "supported": true
+  },
+  {
+    "name": "keka_post_hris_bgv_vendors_bgvId_checks",
+    "module": "hris",
+    "method": "post",
+    "path": "/hris/bgv/vendors/{bgvId}/checks",
+    "source": "https://developers.keka.com/reference/post_hris-bgv-vendors-bgvid-checks",
+    "summary": "Add bgv checks for a vendor",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_hris_employees",
+    "module": "hris",
+    "method": "post",
+    "path": "/hris/employees",
+    "source": "https://developers.keka.com/reference/post_hris-employees",
+    "summary": "Create an Employee",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_hris_employees_documents",
+    "module": "hris",
+    "method": "post",
+    "path": "/hris/employees/documents",
+    "source": "https://developers.keka.com/reference/post_hris-employees-documents",
+    "summary": "Upload Employee Documents",
+    "supported": true
+  },
+  {
+    "name": "keka_post_hris_employees_employeeId_skills",
+    "module": "hris",
+    "method": "post",
+    "path": "/hris/employees/{employeeId}/skills",
+    "source": "https://developers.keka.com/reference/post_hris-employees-employeeid-skills",
+    "summary": "Add employee skills",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_hris_employees_id_exitrequest",
+    "module": "hris",
+    "method": "post",
+    "path": "/hris/employees/{id}/exitrequest",
+    "source": "https://developers.keka.com/reference/post_hris-employees-id-exitrequest",
+    "summary": "Deactivate Employee",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_hris_employees_search",
+    "module": "hris",
+    "method": "post",
+    "path": "/hris/employees/search",
+    "source": "https://developers.keka.com/reference/post_hris-employees-search",
+    "summary": "Search for an employee by work phone or email.",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_payroll_employees_componentclaims",
+    "module": "payroll",
+    "method": "post",
+    "path": "/payroll/employees/componentclaims",
+    "source": "https://developers.keka.com/reference/post_payroll-employees-componentclaims",
+    "summary": "Add Employee Component Claim",
+    "supported": true
+  },
+  {
+    "name": "keka_post_payroll_employees_flexibenefits",
+    "module": "payroll",
+    "method": "post",
+    "path": "/payroll/employees/flexibenefits",
+    "source": "https://developers.keka.com/reference/post_payroll-employees-flexibenefits",
+    "summary": "Declare flexi benefits",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_payroll_employees_routeEmployeeId_salary",
+    "module": "payroll",
+    "method": "post",
+    "path": "/payroll/employees/{routeEmployeeId}/salary",
+    "source": "https://developers.keka.com/reference/post_payroll-employees-routeemployeeid-salary",
+    "summary": "Add Employee Salary",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_payroll_employees_salary",
+    "module": "payroll",
+    "method": "post",
+    "path": "/payroll/employees/salary",
+    "source": "https://developers.keka.com/reference/post_payroll-employees-salary",
+    "summary": "Add Employee Salary",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_payroll_salarycomponentsoverride",
+    "module": "payroll",
+    "method": "post",
+    "path": "/payroll/salarycomponentsoverride",
+    "source": "https://developers.keka.com/reference/post_payroll-salarycomponentsoverride",
+    "summary": "Bulk Salary Component Override",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_payroll_taxdeclaration_incomefromothersources",
+    "module": "payroll",
+    "method": "post",
+    "path": "/payroll/taxdeclaration/incomefromothersources",
+    "source": "https://developers.keka.com/reference/post_payroll-taxdeclaration-incomefromothersources",
+    "summary": "Update income from other sources",
+    "supported": true
+  },
+  {
+    "name": "keka_post_payroll_taxdeclaration_ownresidence",
+    "module": "payroll",
+    "method": "post",
+    "path": "/payroll/taxdeclaration/ownresidence",
+    "source": "https://developers.keka.com/reference/post_payroll-taxdeclaration-ownresidence",
+    "summary": "Update own residence",
+    "supported": true
+  },
+  {
+    "name": "keka_post_payroll_taxdeclaration_rentalresidence",
+    "module": "payroll",
+    "method": "post",
+    "path": "/payroll/taxdeclaration/rentalresidence",
+    "source": "https://developers.keka.com/reference/post_payroll-taxdeclaration-rentalresidence",
+    "summary": "Create or update rental residence.",
+    "supported": true
+  },
+  {
+    "name": "keka_post_pms_praise",
+    "module": "pms",
+    "method": "post",
+    "path": "/pms/praise",
+    "source": "https://developers.keka.com/reference/post_pms-praise",
+    "summary": "Add Praise",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_psa_clients",
+    "module": "psa",
+    "method": "post",
+    "path": "/psa/clients",
+    "source": "https://developers.keka.com/reference/post_psa-clients-1",
+    "summary": "Create a Client",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_psa_clients_clientId_invoices_invoiceId_receivepayment",
+    "module": "psa",
+    "method": "post",
+    "path": "/psa/clients/{clientId}/invoices/{invoiceId}/receivepayment",
+    "source": "https://developers.keka.com/reference/post_psa-clients-clientid-invoices-invoiceid-receivepayment",
+    "summary": "Post invoice payment",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_psa_employees_employeeId_timeentries",
+    "module": "psa",
+    "method": "post",
+    "path": "/psa/employees/{employeeId}/timeentries",
+    "source": "https://developers.keka.com/reference/post_psa-employees-employeeid-timeentries",
+    "summary": "Add project task timesheet entries.",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_psa_employees_employeeId_timeentries_submit",
+    "module": "psa",
+    "method": "post",
+    "path": "/psa/employees/{employeeId}/timeentries/submit",
+    "source": "https://developers.keka.com/reference/post_psa-employees-employeeid-timeentries-submit",
+    "summary": "Submit timesheet entries.",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_psa_projects",
+    "module": "psa",
+    "method": "post",
+    "path": "/psa/projects",
+    "source": "https://developers.keka.com/reference/post_psa-projects-1",
+    "summary": "Create a Project",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_psa_projects_id_allocations",
+    "module": "psa",
+    "method": "post",
+    "path": "/psa/projects/{id}/allocations",
+    "source": "https://developers.keka.com/reference/post_psa-projects-id-allocations",
+    "summary": "Add a project allocation",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_psa_projects_projectId_phases",
+    "module": "psa",
+    "method": "post",
+    "path": "/psa/projects/{projectId}/phases",
+    "source": "https://developers.keka.com/reference/post_psa-projects-projectid-phases-1",
+    "summary": "Create a Project Phase",
+    "supported": true
+  },
+  {
+    "name": "keka_post_psa_projects_projectId_tasks",
+    "module": "psa",
+    "method": "post",
+    "path": "/psa/projects/{projectId}/tasks",
+    "source": "https://developers.keka.com/reference/post_psa-projects-projectid-tasks-1",
+    "summary": "Create a task",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_time_leaverequests",
+    "module": "time",
+    "method": "post",
+    "path": "/time/leaverequests",
+    "source": "https://developers.keka.com/reference/post_time-leaverequests",
+    "summary": "Create an Leave Request",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_time_od",
+    "module": "time",
+    "method": "post",
+    "path": "/time/od",
+    "source": "https://developers.keka.com/reference/post_time-od",
+    "summary": "Adds an On Duty request",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_time_wfh",
+    "module": "time",
+    "method": "post",
+    "path": "/time/wfh",
+    "source": "https://developers.keka.com/reference/post_time-wfh",
+    "summary": "Adds a WFH request",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_v1_hire_jobs_candidate_candidateId_resume",
+    "module": "hire",
+    "method": "post",
+    "path": "/hire/jobs/candidate/{candidateId}/resume",
+    "source": "https://developers.keka.com/reference/post_v1-hire-jobs-candidate-candidateid-resume",
+    "summary": "Upload candidate resume",
+    "bodyType": "multipart/form-data",
+    "supported": false,
+    "reason": "Transport multipart/form-data intentionally unavailable; no file reads or uploads"
+  },
+  {
+    "name": "keka_post_v1_hire_jobs_jobId_candidate",
+    "module": "hire",
+    "method": "post",
+    "path": "/hire/jobs/{jobId}/candidate",
+    "source": "https://developers.keka.com/reference/post_v1-hire-jobs-jobid-candidate",
+    "summary": "Post a job candidate",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_v1_hire_jobs_jobId_candidate_candidateId_notes",
+    "module": "hire",
+    "method": "post",
+    "path": "/hire/jobs/{jobId}/candidate/{candidateId}/notes",
+    "source": "https://developers.keka.com/reference/post_v1-hire-jobs-jobid-candidate-candidateid-notes",
+    "summary": "Adds candidate note",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_v1_hire_preboarding_candidates",
+    "module": "hire",
+    "method": "post",
+    "path": "/hire/preboarding/candidates",
+    "source": "https://developers.keka.com/reference/post_v1-hire-preboarding-candidates",
+    "summary": "Post a Preboarding Candidate",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_v1_hire_vendorId_assessmentrequests_assessm_86574d9876",
+    "module": "hire",
+    "method": "post",
+    "path": "/hire/{vendorId}/assessmentrequests/{assessmentRequestId}",
+    "source": "https://developers.keka.com/reference/post_v1-hire-vendorid-assessmentrequests-assessmentrequestid",
+    "summary": "Add AssessmentResult",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_post_v1_hire_vendorId_assessments",
+    "module": "hire",
+    "method": "post",
+    "path": "/hire/{vendorId}/assessments",
+    "source": "https://developers.keka.com/reference/post_v1-hire-vendorid-assessments",
+    "summary": "Add Assessments",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_app_status",
+    "module": "app",
+    "method": "put",
+    "path": "/app/status",
+    "source": "https://developers.keka.com/reference/put_app-status",
+    "summary": "Update the app status",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_assets_assetId_allocation",
+    "module": "assets",
+    "method": "put",
+    "path": "/assets/{assetId}/allocation",
+    "source": "https://developers.keka.com/reference/put_assets-assetid-allocation",
+    "summary": " To Update AssetAssignment",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_assets_assetId_recover",
+    "module": "assets",
+    "method": "put",
+    "path": "/assets/{assetId}/recover",
+    "source": "https://developers.keka.com/reference/put_assets-assetid-recover",
+    "summary": "To Recover Asset",
+    "supported": true
+  },
+  {
+    "name": "keka_put_expense_claims",
+    "module": "expense",
+    "method": "put",
+    "path": "/expense/claims",
+    "source": "https://developers.keka.com/reference/put_expense-claims",
+    "summary": "Update Expense Claim Payment Status",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_expense_claims_expenseClaimId",
+    "module": "expense",
+    "method": "put",
+    "path": "/expense/claims/{expenseClaimId}",
+    "source": "https://developers.keka.com/reference/put_expense-claims-expenseclaimid",
+    "summary": "Update Expense Claim Payment Status",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_expense_employees_employeeId_expenses_expenseId",
+    "module": "expense",
+    "method": "put",
+    "path": "/expense/employees/{employeeId}/expenses/{expenseId}",
+    "source": "https://developers.keka.com/reference/put_expense-employees-employeeid-expenses-expenseid",
+    "summary": "Updates an expense",
+    "supported": true
+  },
+  {
+    "name": "keka_put_expense_employees_expenses",
+    "module": "expense",
+    "method": "put",
+    "path": "/expense/employees/expenses",
+    "source": "https://developers.keka.com/reference/put_expense-employees-expenses",
+    "summary": "Updates an expense",
+    "supported": true
+  },
+  {
+    "name": "keka_put_helpdesk_tickets_ticketId",
+    "module": "helpdesk",
+    "method": "put",
+    "path": "/helpdesk/tickets/{ticketId}",
+    "source": "https://developers.keka.com/reference/put_helpdesk-tickets-ticketid",
+    "summary": " To Update Ticket",
+    "supported": true
+  },
+  {
+    "name": "keka_put_hris_bgv_bgvId_requests_requestId",
+    "module": "hris",
+    "method": "put",
+    "path": "/hris/bgv/{bgvId}/requests/{requestId}",
+    "source": "https://developers.keka.com/reference/put_hris-bgv-bgvid-requests-requestid",
+    "summary": "Add bgvRequest Report",
+    "bodyType": "multipart/form-data",
+    "supported": false,
+    "reason": "Transport multipart/form-data intentionally unavailable; no file reads or uploads"
+  },
+  {
+    "name": "keka_put_hris_e_sign_vendorId_letterrequests_letterRequestId",
+    "module": "hris",
+    "method": "put",
+    "path": "/hris/e-sign/{vendorId}/letterrequests/{letterRequestId}",
+    "source": "https://developers.keka.com/reference/put_hris-e-sign-vendorid-letterrequests-letterrequestid",
+    "summary": "Upload digitally signed document",
+    "supported": true
+  },
+  {
+    "name": "keka_put_hris_employees_id_exitrequest",
+    "module": "hris",
+    "method": "put",
+    "path": "/hris/employees/{id}/exitrequest",
+    "source": "https://developers.keka.com/reference/put_hris-employees-id-exitrequest",
+    "summary": "Update Deactivate Employee",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_hris_employees_jobdetails",
+    "module": "hris",
+    "method": "put",
+    "path": "/hris/employees/jobdetails",
+    "source": "https://developers.keka.com/reference/put_hris-employees-jobdetails",
+    "summary": "Update employee job details",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_hris_employees_personaldetails",
+    "module": "hris",
+    "method": "put",
+    "path": "/hris/employees/personaldetails",
+    "source": "https://developers.keka.com/reference/put_hris-employees-personaldetails",
+    "summary": "Update Employee personal details",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_loans",
+    "module": "loans",
+    "method": "put",
+    "path": "/loans",
+    "source": "https://developers.keka.com/reference/put_loans",
+    "summary": "Updates the loan details for the specified loan identifier, with support for multi-file upload.",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_payroll_employees_financialdetails",
+    "module": "payroll",
+    "method": "put",
+    "path": "/payroll/employees/financialdetails",
+    "source": "https://developers.keka.com/reference/put_payroll-employees-financialdetails",
+    "summary": "update employee financial details.",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_payroll_employees_financialdetails_banks",
+    "module": "payroll",
+    "method": "put",
+    "path": "/payroll/employees/financialdetails/banks",
+    "source": "https://developers.keka.com/reference/put_payroll-employees-financialdetails-banks",
+    "summary": "update employee bank details.",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_payroll_employees_routeEmployeeId_salary",
+    "module": "payroll",
+    "method": "put",
+    "path": "/payroll/employees/{routeEmployeeId}/salary",
+    "source": "https://developers.keka.com/reference/put_payroll-employees-routeemployeeid-salary",
+    "summary": "Revise Employee Salary",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_payroll_employees_salary",
+    "module": "payroll",
+    "method": "put",
+    "path": "/payroll/employees/salary",
+    "source": "https://developers.keka.com/reference/put_payroll-employees-salary",
+    "summary": "Revise Employee Salary",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_payroll_employees_taxregime",
+    "module": "payroll",
+    "method": "put",
+    "path": "/payroll/employees/taxregime",
+    "source": "https://developers.keka.com/reference/put_payroll-employees-taxregime",
+    "summary": "Update employee tax regime.",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_payroll_paygroups_paycycles_adhoctransactions",
+    "module": "payroll",
+    "method": "put",
+    "path": "/payroll/paygroups/paycycles/adhoctransactions",
+    "source": "https://developers.keka.com/reference/put_payroll-paygroups-paycycles-adhoctransactions",
+    "summary": "Add the adhoc transaction",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_payroll_paygroups_paycycles_paybatches_payments",
+    "module": "payroll",
+    "method": "put",
+    "path": "/payroll/paygroups/paycycles/paybatches/payments",
+    "source": "https://developers.keka.com/reference/put_payroll-paygroups-paycycles-paybatches-payments",
+    "summary": "Update the Payments status",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_payroll_paygroups_routePayGroupId_paycycles__fbbd2c96dc",
+    "module": "payroll",
+    "method": "put",
+    "path": "/payroll/paygroups/{routePayGroupId}/paycycles/{routePayCycleId}/paybatches/{routePayBatchId}/payments",
+    "source": "https://developers.keka.com/reference/put_payroll-paygroups-routepaygroupid-paycycles-routepaycycleid-paybatches-routepaybatchid-payments",
+    "summary": "Update the Payments status",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_payroll_taxdeclaration",
+    "module": "payroll",
+    "method": "put",
+    "path": "/payroll/taxdeclaration",
+    "source": "https://developers.keka.com/reference/put_payroll-taxdeclaration",
+    "summary": "Update individual tax declaration component.",
+    "supported": true
+  },
+  {
+    "name": "keka_put_pms_goals_goalId_progress",
+    "module": "pms",
+    "method": "put",
+    "path": "/pms/goals/{goalId}/progress",
+    "source": "https://developers.keka.com/reference/put_pms-goals-goalid-progress",
+    "summary": "Update goal progress",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_psa_clients_id",
+    "module": "psa",
+    "method": "put",
+    "path": "/psa/clients/{id}",
+    "source": "https://developers.keka.com/reference/put_psa-clients-id",
+    "summary": "Update a Client",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_psa_projects_id",
+    "module": "psa",
+    "method": "put",
+    "path": "/psa/projects/{id}",
+    "source": "https://developers.keka.com/reference/put_psa-projects-id",
+    "summary": "Update a Project",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_psa_projects_id_allocations_resources_resourceId",
+    "module": "psa",
+    "method": "put",
+    "path": "/psa/projects/{id}/allocations/resources/{resourceId}",
+    "source": "https://developers.keka.com/reference/put_psa-projects-id-allocations-resources-resourceid",
+    "summary": "Update a project allocation",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_psa_projects_projectId_tasks_taskId",
+    "module": "psa",
+    "method": "put",
+    "path": "/psa/projects/{projectId}/tasks/{taskId}",
+    "source": "https://developers.keka.com/reference/put_psa-projects-projectid-tasks-taskid",
+    "summary": "Update a task",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_rnr_employee_employeeId_points",
+    "module": "rnr",
+    "method": "put",
+    "path": "/rnr/employee/{employeeId}/points",
+    "source": "https://developers.keka.com/reference/put_rnr-employee-employeeid-points",
+    "summary": "Updates the employee reward points.",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_traveldesk_advancerequests",
+    "module": "traveldesk",
+    "method": "put",
+    "path": "/traveldesk/advancerequests",
+    "source": "https://developers.keka.com/reference/put_traveldesk-advancerequests",
+    "summary": "To update Advance status",
+    "supported": true
+  },
+  {
+    "name": "keka_put_traveldesk_advancerequests_advanceId",
+    "module": "traveldesk",
+    "method": "put",
+    "path": "/traveldesk/advancerequests/{advanceId}",
+    "source": "https://developers.keka.com/reference/put_traveldesk-advancerequests-advanceid",
+    "summary": "To update Advance status",
+    "supported": true
+  },
+  {
+    "name": "keka_put_v1_hire_jobs_jobId_candidate_candidateId",
+    "module": "hire",
+    "method": "put",
+    "path": "/hire/jobs/{jobId}/candidate/{candidateId}",
+    "source": "https://developers.keka.com/reference/put_v1-hire-jobs-jobid-candidate-candidateid",
+    "summary": "Updated a candidate",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_v1_hire_preboarding_candidates_id",
+    "module": "hire",
+    "method": "put",
+    "path": "/hire/preboarding/candidates/{id}",
+    "source": "https://developers.keka.com/reference/put_v1-hire-preboarding-candidates-id",
+    "summary": "update a Preboarding Candidate",
+    "bodyType": "application/json",
+    "supported": true
+  },
+  {
+    "name": "keka_put_v1_hire_vendorId_assessments_assessmentId",
+    "module": "hire",
+    "method": "put",
+    "path": "/hire/{vendorId}/assessments/{assessmentId}",
+    "source": "https://developers.keka.com/reference/put_v1-hire-vendorid-assessments-assessmentid",
+    "summary": "Update Assessments",
+    "bodyType": "application/json",
+    "supported": true
+  }
+]
