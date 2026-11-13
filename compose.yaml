@@ -1,6 +1,8 @@
 services:
   keka-mcp:
     build: .
+    # CI deploys an immutable per-commit tag (keka-mcp:<sha>); local runs fall back to keka-mcp:local.
+    image: ${KEKA_IMAGE:-keka-mcp:local}
     restart: unless-stopped
     init: true
     read_only: true
@@ -12,7 +14,9 @@ services:
       KEKA_ENVIRONMENT: ${KEKA_ENVIRONMENT:-kekademo}
       KEKA_MODULES: ${KEKA_MODULES:-hris,pms,psa,time}
       KEKA_READ_TOOLS: ${KEKA_READ_TOOLS:-}
-      KEKA_ALLOW_WRITES: "false"
+      # Writes stay off unless the host .env opts in AND every write tool is named below.
+      KEKA_ALLOW_WRITES: ${KEKA_ALLOW_WRITES:-false}
+      KEKA_WRITE_TOOLS: ${KEKA_WRITE_TOOLS:-}
       KEKA_API_KEY_PARAMETER: ${KEKA_API_KEY_PARAMETER:-api_key}
       KEKA_CLIENT_ID_FILE: /run/secrets/keka_client_id
       KEKA_CLIENT_SECRET_FILE: /run/secrets/keka_client_secret

@@ -1,5 +1,7 @@
 image: node:22-bookworm-slim
-stages: [validate]
+
+stages: [validate, deploy]
+
 validate:
   stage: validate
   script:
@@ -12,3 +14,23 @@ validate:
     paths: [.npm/]
   variables:
     npm_config_cache: $CI_PROJECT_DIR/.npm
+
+# Production deploy for the RMgX internal hosting (RMgX-MCP-Host, https://keka.mcp.rmgx.in/mcp).
+# Runs on the project-scoped shell runner installed ON that host (tag: mcp-host), so the job
+# needs no AWS credentials, no SSH key and no container registry: the runner is the machine.
+# The persistent checkout at /opt/rmgx/keka-mcp makes tag-based rollback possible; the script
+# rolls back by itself when health or the public auth gate fails.
+deploy:
+  stage: deploy
+  tags: [mcp-host]
+  needs: [validate]
+  resource_group: keka-mcp-production
+  environment:
+    name: production
+    url: https://keka.mcp.rmgx.in/mcp
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "push"'
+  variables:
+    GIT_DEPTH: "0"
+  script:
+    - bash deploy/deploy.sh
