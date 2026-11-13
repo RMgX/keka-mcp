@@ -80,3 +80,60 @@ Connect an MCP client using the final HTTPS URL and `Authorization: Bearer <MCP 
 Pull an approved GitLab commit, run tests, rebuild and recreate the service. Record the deployed commit and keep the previous image until checks pass. Rollback restores application/configuration only; it does not undo Keka writes. No application database exists.
 
 Container build, DNS/TLS and Composio account checks must be completed on the deployment host. No cloud resources or hosting charges are created by repository setup.
+
+## RMgX production deployment (as built 2026-11-14)
+
+RMgX runs this server on a dedicated EC2 host, not on the shared web-sites box.
+
+| Item | Value |
+| --- | --- |
+| Host | `RMgX-MCP-Host` (`i-091d607f2d2689ded`, `t3a.small`, Ubuntu 24.04, Elastic IP `43.204.21.3`) |
+| Endpoint | `https://keka.mcp.rmgx.in/mcp` (nginx + Let's Encrypt, no CloudFront) |
+| Checkout | `/opt/rmgx/keka-mcp`, owned by `gitlab-runner` |
+| Container port | `127.0.0.1:3000` (never published) |
+| Secrets | `/opt/rmgx/keka-mcp/secrets/`, `root:ubuntu 0440` |
+| Config | `/opt/rmgx/keka-mcp/.env`, `root:gitlab-runner 0640` |
+| Runbook | `rmgx-firm/tools/tech-ops` → `docs/runbooks/mcp-hosting.md` |
+
+### Active configuration
+
+```dotenv
+KEKA_COMPANY=rmgx
+KEKA_ENVIRONMENT=keka            # production, not kekademo
+KEKA_MODULES=hris,hire,assets,banks,expense,expensepolicies,helpdesk,loans,payroll,pms,psa,requisition,rnr,time,traveldesk,attendance,clients,app
+KEKA_API_KEY_PARAMETER=api_key   # the legacy `apikey` form is not needed for this tenant
+KEKA_ALLOW_WRITES=true
+KEKA_WRITE_TOOLS=<all 73 write tool names>
+MCP_PUBLIC_URL=https://keka.mcp.rmgx.in/mcp
+MCP_ALLOWED_ORIGINS=
+MCP_TOOL_MODE=full
+MCP_REPORT_CACHE_SECONDS=0
+```
+
+Two independent gates control the tool surface, both fail-closed:
+
+- `KEKA_MODULES` filters by catalog module. A module omitted here hides every tool in it, silently —
+  the default `hris` exposes a small fraction of the catalog.
+- Writes need **both** `KEKA_ALLOW_WRITES=true` **and** the tool named in `KEKA_WRITE_TOOLS`. An
+  empty `KEKA_WRITE_TOOLS` permits no writes.
+
+As configured above the server exposes 194 tools (121 read + 73 write) across all 18 modules.
+
+`secrets/` files must be readable by the container's uid 1000 (`node`). Compose `secrets:` preserves
+the host's ownership and mode, so `0600 root` fails at startup with
+`Cannot load KEKA_CLIENT_ID from its secret file`.
+
+### Continuous deployment
+
+A project-scoped GitLab runner (tag `mcp-host`) is registered on the host itself, so the deploy job
+needs no cloud credentials or SSH keys. `.gitlab-ci.yml` runs `validate` first, then `deploy` on
+pushes to the default branch only:
+
+- `deploy/deploy.sh` builds `<image>:<CI_COMMIT_SHORT_SHA>`, runs `docker compose up -d --no-build`,
+  waits for `/health`, asserts `200` there and `401` on a public unauthenticated `POST /mcp`, prunes
+  all but the five newest tags, and on any failure restores the previous commit and image tag.
+- `compose.yaml` takes `image: ${KEKA_IMAGE:-keka-mcp:local}` so a rollback is a tag change, not a
+  rebuild.
+- Deploys are serialised by `resource_group: keka-mcp-production`.
+
+Rollback restores application and configuration only; it does not undo Keka writes.
